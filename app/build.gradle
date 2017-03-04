@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        //TODO rename package
+        applicationId "com.popalay.appname"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("keys/debug.keystore")
+        }
+
+        release {
+            storeFile file("keys/release.keystore")
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        all {
+        }
+        staging {
+        }
+        production {
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    lintOptions.disable 'InvalidPackage'
+
+    android.variantFilter { variant ->
+        if (variant.buildType.name == 'debug' && variant.getFlavors().get(0).name == 'production') {
+            variant.setIgnore(true)
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    final SUPPORT_LIBRARY_VERSION = '25.2.0'
+    final DAGGER_VERSION = '2.9'
+    final MVP_MOXY_VERSION = '1.4.5'
+
+    // Support
+    compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+
+    // MVP
+    compile "com.arello-mobile:moxy-android:$MVP_MOXY_VERSION"
+    annotationProcessor "com.arello-mobile:moxy-compiler:$MVP_MOXY_VERSION"
+    compile 'com.github.popalay:rx-lifecycle-moxy:1.0.0'
+
+    // DI
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+
+    // Rx
+    compile 'io.reactivex:rxjava:1.2.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.trello:rxlifecycle:1.0'
+
+    // DB
+    compile 'com.github.popalay:rx-realm:1.0.5'
+
+    // Utils
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.uphyca:stetho_realm:2.0.0'
+    compile 'com.annimon:stream:1.1.6'
+
+    testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/window</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
+    </style>
+
+    <style name="DialogTheme" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="ProgressDialogTheme" parent="DialogTheme">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

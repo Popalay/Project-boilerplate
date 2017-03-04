@@ -1,0 +1,8 @@
+<resources>
+    <string name="action_ok">OK</string>
+    <string name="error">Error</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_wait">Please wait…</string>
+    <!--TODO change app name-->
+    <string name="app_name">App Name</string>
+</resources>
