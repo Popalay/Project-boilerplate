@@ -1,6 +1,5 @@
-package com.popalay.cardme.utils.extensions
+package com.popalay.appname.utils.extensions
 
-import com.popalay.cardme.DEBOUNCE_DELAY_MS
 import io.reactivex.Flowable
 import io.reactivex.FlowableTransformer
 import io.reactivex.Observable
@@ -12,9 +11,9 @@ fun <T : Any> Flowable<T>.applyThrottling(): Flowable<T> = compose(applyThrottli
 fun <T : Any> Observable<T>.applyThrottling(): Observable<T> = compose(applyThrottlingObservable<T>())
 
 private fun <T : Any> applyThrottlingObservable(): ObservableTransformer<T, T> = ObservableTransformer {
-    it.throttleFirst(DEBOUNCE_DELAY_MS, TimeUnit.MILLISECONDS)
+    it.throttleFirst(500L, TimeUnit.MILLISECONDS)
 }
 
 private fun <T : Any> applyThrottlingFlowable(): FlowableTransformer<T, T> = FlowableTransformer {
-    it.throttleFirst(DEBOUNCE_DELAY_MS, TimeUnit.MILLISECONDS)
+    it.throttleFirst(500L, TimeUnit.MILLISECONDS)
 }

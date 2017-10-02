@@ -1,11 +1,11 @@
-package com.popalay.cardme.utils.recycler
+package com.popalay.appname.utils.recycler
 
 import android.databinding.ListChangeRegistry
 import android.databinding.ObservableList
 import android.support.annotation.MainThread
 import android.support.v7.util.DiffUtil
 import android.support.v7.util.ListUpdateCallback
-import com.popalay.cardme.domain.model.StableId
+import com.github.nitrico.lastadapter.StableId
 import java.util.*
 import kotlin.collections.ArrayList
 

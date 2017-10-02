@@ -4,6 +4,7 @@
     <dimen name="smallest">4dp</dimen>
     <dimen name="small">8dp</dimen>
     <dimen name="normal">16dp</dimen>
-    <dimen name="large">32dp</dimen>
+    <dimen name="large">24dp</dimen>
+    <dimen name="larger">32dp</dimen>
 
 </resources>

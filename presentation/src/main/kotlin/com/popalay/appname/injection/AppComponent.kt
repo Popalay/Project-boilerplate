@@ -1,8 +1,8 @@
 package com.popalay.appname.injection
 
+import com.alexfacciorusso.daggerviewmodel.DaggerViewModelInjectionModule
 import com.popalay.appname.App
 import com.popalay.appname.data.injection.DataModule
-import com.popalay.cardme.presentation.base.navigation.CustomRouter
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -27,7 +27,4 @@ interface AppComponent : AndroidInjector<App> {
 
         fun build(): AppComponent
     }
-
-    fun getRouter(): CustomRouter
-
 }

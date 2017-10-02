@@ -2,7 +2,7 @@ package com.popalay.appname.presentation.base
 
 import android.support.v7.app.AppCompatActivity
 import com.popalay.appname.injection.Injectable
-import com.popalay.cardme.presentation.base.navigation.CustomNavigator
+import com.popalay.appname.presentation.base.navigation.CustomNavigator
 import io.reactivex.disposables.CompositeDisposable
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject

@@ -1,6 +1,6 @@
-package com.popalay.cardme.utils.recycler
+package com.popalay.appname.utils.recycler
 
-import com.popalay.cardme.domain.model.StableId
+import com.github.nitrico.lastadapter.StableId
 
 
 class StableIdDiffListCallback<in T : StableId> : DiffObservableList.Callback<T> {
