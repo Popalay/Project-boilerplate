@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$project.rootDir/buildsystem/script-git-version.gradle"
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        //TODO rename package
+        applicationId "com.popalay.appname"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(globalConf.debugStoreFile)
+        }
+
+        release {
+            storeFile file(globalConf.releaseStoreFile)
+            keyAlias globalConf.keyAlias
+            keyPassword globalConf.keyPassword
+            storePassword globalConf.storePassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+
+        all {
+        }
+
+        dev {
+            versionCode gitVersionCodeTime
+            versionName gitVersionName
+        }
+
+        prod {
+            versionCode gitVersionCode
+            versionName gitVersionName
+        }
+    }
+
+    dataBinding.enabled true
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':data')
+    api project(":domain")
+
+    implementation presentationDependencies.cardView
+    implementation presentationDependencies.recyclerView
+    implementation presentationDependencies.supportLib
+    implementation presentationDependencies.supportDesign
+    implementation presentationDependencies.constraintLayout
+
+    implementation presentationDependencies.lastAdapter
+
+    kapt presentationDependencies.databindingCompiler
+    implementation presentationDependencies.rxDatabinding
+
+    implementation presentationDependencies.archComponentsRuntime
+    implementation presentationDependencies.archComponentsExtensions
+    kapt presentationDependencies.archComponentsCompiler
+
+    implementation presentationDependencies.daggerViewModel
+
+    implementation presentationDependencies.router
+
+    implementation presentationDependencies.dagger
+    kapt presentationDependencies.daggerCompiler
+    implementation presentationDependencies.daggerAndroidSupport
+    kapt presentationDependencies.daggerAndroidProcessor
+
+    implementation presentationDependencies.rxJava
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.rxKotlin
+    implementation presentationDependencies.rxRelay
+
+    implementation developmentDependencies.stetho
+    implementation developmentDependencies.androidProguards
+    debugImplementation developmentDependencies.leakCanary
+    releaseImplementation developmentDependencies.leakCanaryNoOp
+    testImplementation developmentDependencies.leakCanaryNoOp
+}

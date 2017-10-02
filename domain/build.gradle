@@ -1,0 +1,28 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+configurations.all {
+    resolutionStrategy {
+        force domainDependencies.kotlin
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation domainDependencies.kotlin
+
+    implementation domainDependencies.rxJava
+    implementation domainDependencies.rxKotlin
+
+    implementation domainDependencies.javaxAnnotation
+    implementation domainDependencies.javaxInject
+
+    testImplementation testDomainDependencies.junit
+    testImplementation testDomainDependencies.mockito
+    testImplementation testDomainDependencies.mockitoKotlin
+    testImplementation testDomainDependencies.assertJ
+    testImplementation testDomainDependencies.kotlinTest
+}
