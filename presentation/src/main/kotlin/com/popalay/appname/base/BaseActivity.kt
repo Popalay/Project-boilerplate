@@ -2,11 +2,8 @@ package com.popalay.appname.base
 
 import android.support.v7.app.AppCompatActivity
 import com.popalay.appname.injection.Injectable
-import com.popalay.appname.presentation.base.navigation.CustomNavigator
 import io.reactivex.disposables.CompositeDisposable
-import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.android.SupportAppNavigator
 import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(), Injectable {
