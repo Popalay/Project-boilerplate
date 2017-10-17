@@ -1,6 +1,5 @@
 package com.popalay.appname.injection
 
-import com.alexfacciorusso.daggerviewmodel.DaggerViewModelInjectionModule
 import com.popalay.appname.App
 import com.popalay.appname.data.injection.DataModule
 import dagger.BindsInstance
@@ -13,7 +12,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(
         AndroidSupportInjectionModule::class,
-        DaggerViewModelInjectionModule::class,
         UiModule::class,
         DataModule::class,
         AppModule::class)

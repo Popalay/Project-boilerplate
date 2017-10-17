@@ -8,7 +8,6 @@ def globalConf = rootProject.ext
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         //TODO rename package
@@ -48,9 +47,6 @@ android {
 
     productFlavors {
 
-        all {
-        }
-
         dev {
             versionCode gitVersionCodeTime
             versionName gitVersionName
@@ -60,13 +56,6 @@ android {
             versionCode gitVersionCode
             versionName gitVersionName
         }
-    }
-
-    dataBinding.enabled true
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     sourceSets {
@@ -92,16 +81,9 @@ dependencies {
     implementation presentationDependencies.supportDesign
     implementation presentationDependencies.constraintLayout
 
-    implementation presentationDependencies.lastAdapter
-
-    kapt presentationDependencies.databindingCompiler
-    implementation presentationDependencies.rxDatabinding
-
     implementation presentationDependencies.archComponentsRuntime
     implementation presentationDependencies.archComponentsExtensions
     kapt presentationDependencies.archComponentsCompiler
-
-    implementation presentationDependencies.daggerViewModel
 
     implementation presentationDependencies.router
 
@@ -113,9 +95,7 @@ dependencies {
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid
     implementation presentationDependencies.rxKotlin
-    implementation presentationDependencies.rxRelay
 
-    implementation developmentDependencies.stetho
     implementation developmentDependencies.androidProguards
     debugImplementation developmentDependencies.leakCanary
     releaseImplementation developmentDependencies.leakCanaryNoOp

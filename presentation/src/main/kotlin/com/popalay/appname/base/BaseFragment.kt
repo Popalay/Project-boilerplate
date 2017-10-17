@@ -1,4 +1,4 @@
-package com.popalay.appname.presentation.base
+package com.popalay.appname.base
 
 import android.support.v4.app.Fragment
 import com.popalay.appname.injection.Injectable

@@ -1,4 +1,4 @@
-package com.popalay.appname.presentation.base
+package com.popalay.appname.base
 
 import android.arch.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

@@ -10,33 +10,31 @@ allprojects {
 ext {
 
     //Android
-    buildToolsVersion = "26.0.0"
     minSdkVersion = 21
     targetSdkVersion = 26
     compileSdkVersion = 26
 
-    gradlePlugin = '3.0.0-beta6'
-    kotlinLanguage = '1.1.4-3'
+    gradlePlugin = '3.0.0-rc1'
+    kotlinLanguage = '1.1.50'
 
     //Libraries
     supportLibrary = '26.1.0'
-    rxJava = '2.1.2'
+    playServices = '11.4.2'
+    archComponents = '1.0.0-beta2'
+    constraintLayout = '1.1.0-beta1'
+
+    //Rx
+    rxJava = '2.1.5'
     rxAndroid = '2.0.1'
     rxKotlin = '2.1.0'
-    rxRelay = '2.0.0'
-    rxDataBinding = '1.1.1'
-    playServices = '11.2.0'
-    dagger = '2.11'
+
+    //DI
+    dagger = '2.12'
     javaxAnnotation = '1.0'
     javaxInject = '1'
-    archComponents = '1.0.0-alpha9'
+
+    //Other
     cicerone = '2.1.0'
-    constraintLayout = '1.0.2'
-    gson = '2.8.1'
-    lastAdapter = '2.2.2'
-    streamApi = '1.1.8'
-    androidPermissionX = '0142673ad1'
-    daggerViewModel = '0.1.2'
 
     //Testing
     jUnit = '4.12'
@@ -46,37 +44,28 @@ ext {
 
     //Development
     leakCanary = '1.5.1'
-    stetho = '1.5.0'
     androidProguards = '2.0.1'
+    debugDb = '1.0.1'
 
     presentationDependencies = [
             cardView                : "com.android.support:cardview-v7:$supportLibrary",
             recyclerView            : "com.android.support:recyclerview-v7:$supportLibrary",
             supportLib              : "com.android.support:support-v4:$supportLibrary",
             supportDesign           : "com.android.support:design:$supportLibrary",
-            customTabs              : "com.android.support:customtabs:$supportLibrary",
             constraintLayout        : "com.android.support.constraint:constraint-layout:$constraintLayout",
 
             rxJava                  : "io.reactivex.rxjava2:rxjava:$rxJava",
             rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
             rxKotlin                : "io.reactivex.rxjava2:rxkotlin:$rxKotlin",
-            rxRelay                 : "com.jakewharton.rxrelay2:rxrelay:$rxRelay",
 
             dagger                  : "com.google.dagger:dagger:$dagger",
             daggerCompiler          : "com.google.dagger:dagger-compiler:$dagger",
             daggerAndroidSupport    : "com.google.dagger:dagger-android-support:$dagger",
             daggerAndroidProcessor  : "com.google.dagger:dagger-android-processor:$dagger",
 
-            databindingCompiler     : "com.android.databinding:compiler:$gradlePlugin",
-            rxDatabinding           : "com.stepango.rxdatabindings:rxdatabindings:$rxDataBinding",
-
             archComponentsRuntime   : "android.arch.lifecycle:runtime:$archComponents",
             archComponentsExtensions: "android.arch.lifecycle:extensions:$archComponents",
             archComponentsCompiler  : "android.arch.lifecycle:compiler:$archComponents",
-
-            daggerViewModel         : "com.alexfacciorusso:daggerviewmodel:$daggerViewModel",
-
-            lastAdapter             : "com.github.nitrico.lastadapter:lastadapter:$lastAdapter",
 
             router                  : "ru.terrakok.cicerone:cicerone:$cicerone",
     ]
@@ -92,21 +81,17 @@ ext {
     ]
 
     dataDependencies = [
-            rxJava            : "io.reactivex.rxjava2:rxjava:$rxJava",
+            rxJava        : "io.reactivex.rxjava2:rxjava:$rxJava",
 
-            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinLanguage",
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinLanguage",
 
-            dagger            : "com.google.dagger:dagger:$dagger",
-            daggerCompiler    : "com.google.dagger:dagger-compiler:$dagger",
-
-            streamApi         : "com.annimon:stream:$streamApi",
-            androidPermissionX: "com.github.Popalay:AndroidPermissionX:$androidPermissionX",
+            dagger        : "com.google.dagger:dagger:$dagger",
+            daggerCompiler: "com.google.dagger:dagger-compiler:$dagger",
     ]
 
     developmentDependencies = [
             leakCanary      : "com.squareup.leakcanary:leakcanary-android:$leakCanary",
             leakCanaryNoOp  : "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanary",
-            stetho          : "com.facebook.stetho:stetho:$stetho",
             androidProguards: "com.github.yongjhih.android-proguards:android-proguards:$androidProguards",
     ]
 
